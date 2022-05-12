@@ -205,6 +205,7 @@ const Home: NextPage = () => {
           <br />
           <motion.p
             key={info.desc}
+            transition={{ delay: 0.2 }}
             animate={{
               translateY: [50, 0],
               opacity: [0, 1],

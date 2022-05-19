@@ -1,23 +1,49 @@
 import type { NextPage } from "next";
 import { useRef, useState } from "react";
 import { motion } from "framer-motion";
+import { useRouter } from "next/router";
+import clsx from "clsx";
 
 const Card = (props: { onClick: () => void; time: string; desc: string }) => {
   const [time, title] = props.time.split(":");
+  const router = useRouter();
+  const isSelected = router.query.period === props.time;
   return (
     <motion.button
+      animate={{
+        width: isSelected ? 550 : 80,
+      }}
       onClick={props.onClick}
-      className="min-w-fit select-none relative"
+      className={clsx(
+        " w-20  select-none transition border-r items-center  duration-200 border-white text-white border-opacity-25 relative h-40 hover:bg-cyan-600 hover:text-black  bg-black",
+        {
+          "bg-cyan-600": isSelected,
+        }
+      )}
     >
-      <div className="w-32 border-r border-gray-300 border-opacity-25 text-left h-40 hover:bg-cyan-600 hover:text-black  bg-black overflow-hidden">
-        <div className="text-white overflow-hidden py-6 font-bold w-full text-sm   bg-opacity-40 h-full absolute top-0 left-0 p-2 ">
-          <div>
+      <div
+        className={clsx(
+          "flex justify-center flex-col  text-white overflow-hidden w-full text-xl font-black   bg-opacity-40 h-full absolute top-0 left-0 p-2 ",
+          { "": isSelected }
+        )}
+      >
+        <motion.div
+          animate={{
+            rotate: isSelected ? 0 : 90,
+          }}
+        >
+          <span className={clsx("mx-1", isSelected ? "text-5xl" : "text-base")}>
             {time}
-            <span className=" text-gray-200 text-xs ml-1">πχ</span>
-          </div>
-          <br />
-          <div>{title}:</div>
-        </div>
+          </span>
+          <span className="text-xs ml-1">π.Χ.</span>
+        </motion.div>
+        <motion.div
+          animate={{
+            opacity: isSelected ? 1 : 0,
+          }}
+        >
+          {title}:
+        </motion.div>
       </div>
     </motion.button>
   );
@@ -26,6 +52,8 @@ const Card = (props: { onClick: () => void; time: string; desc: string }) => {
 const timeLine = [
   {
     time: `550: Ο Κύρος Β΄ (ο Μέγας)`,
+    time1: `550`,
+    desc1: `Ο Κύρος Β΄ (ο Μέγας)`,
     desc: `Ο Κύρος Β΄ (ο Μέγας) καταλύει το κράτος των Μήδων στους οποίους ο λαός του, οι Πέρσες
     ήταν υποτελείς, δημιουργώντας ένα ανεξάρτητο βασίλειο.`,
   },
@@ -177,63 +205,81 @@ const timeLine = [
 ];
 
 const Home: NextPage = () => {
-  const ref = useRef<HTMLDivElement>(null);
   const [info, setInfo] = useState(timeLine[0]);
+  const router = useRouter();
   return (
-    <div className="w-screen  h-screen relative">
+    <div className="w-screen   h-screen relative">
       <img
         src="/images/salamis.webp"
         className="object-cover w-full h-full absolute"
         alt=""
       />
-      <div className="w-screen h-screen bg-black z-50 flex flex-col absolute bg-opacity-60">
-        <div className="md:w-4/6 w-full md:pt-20 md:pl-10 p-5">
-          <div
-            key={info.desc}
-            className="grid grid-cols-[30rem_1fr] gap-x-8 text-white md:text-xl text-sm"
-          >
-            <motion.img
-              transition={{ delay: 0.2 }}
-              animate={{
-                translateX: [-50, 0],
-                opacity: [0, 1],
-              }}
-              className="w-full"
-              src="/images/test.jpg"
-            />
-
-            <div>
+      <div className="w-screen flex justify-center items-center h-screen bg-black z-50 flex-col absolute bg-opacity-60">
+        <div
+          key={info.desc}
+          className="flex border border-white  border-opacity-10 rounded overflow-hidden shadow bg-black bg-opacity-30 w-4/6 my-auto text-white md:text-xl text-sm"
+        >
+          <motion.img
+            transition={{ delay: 0.2 }}
+            animate={{
+              translateX: [-50, 0],
+              opacity: [0, 1],
+            }}
+            className="w-[800px] overflow-hidden object-cover h-[600px] border-r border-white border-opacity-20 "
+            src="https://source.unsplash.com/random"
+          />
+          <div className=" w-full px-8 py-8">
+            <div className="flex items-end mr-3 text-orange-400">
               <motion.h1
                 key={info.time}
                 animate={{
                   translateY: [50, 0],
                   opacity: [0, 1],
                 }}
-                className="md:text-5xl mb-10  font-bold text-white"
+                className="text-7xl  font-bold"
               >
-                {info.time}
+                {info.time1}
               </motion.h1>
-
-              <motion.div
-                transition={{ delay: 0.4 }}
+              <motion.span
+                transition={{
+                  delay: 0.3,
+                }}
                 animate={{
-                  translateX: [50, 0],
+                  translateY: [-150, 0],
                   opacity: [0, 1],
                 }}
-                className="text-xl"
+                className="text-3xl ml-2"
               >
+                px
+              </motion.span>
+            </div>
+            <div className="border-b border-orange-400 border-opacity-50 my-5" />
+            <div>
+              <motion.div
+                transition={{ delay: 0.6 }}
+                animate={{
+                  translateX: [100, 0],
+                  opacity: [0, 1],
+                }}
+                className="text-xl text-gray-300"
+              >
+                <div className="mb-4 text-sm text-gray-200">{info.desc1}</div>
                 {info.desc}
               </motion.div>
             </div>
           </div>
         </div>
-        <div
-          ref={ref}
-          className="flex duration-200 w-full justify-start bg-black bg-opacity-75 mt-auto overflow overflow-auto  mx-auto "
-        >
+        <div className="overflow-x-scroll whitespace-nowrap w-screen">
           {timeLine.map((obj, idx) => (
             <Card
-              onClick={() => setInfo(obj)}
+              onClick={() => {
+                router.push({
+                  query: {
+                    period: obj.time,
+                  },
+                });
+                setInfo(obj);
+              }}
               time={obj.time}
               desc={obj.desc}
               key={idx}

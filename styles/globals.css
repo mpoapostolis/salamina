@@ -49,7 +49,7 @@ a {
 /* width */
 ::-webkit-scrollbar {
   width: 0px;
-  height: 2px;
+  height: 5px;
 }
 
 /* Track */

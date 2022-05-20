@@ -16,35 +16,41 @@ const Card = (props: { onClick: () => void; time: string; desc: string }) => {
       }}
       onClick={props.onClick}
       className={clsx(
-        "w-20 select-none transition border-r items-center  duration-200 border-white text-white border-opacity-25 relative h-40 hover:bg-cyan-600 hover:text-black  bg-black",
+        "w-20 select-none transition border-r items-center  duration-200 border-white text-white border-opacity-25 relative h-40 hover:bg-cyan-800  hover:text-black  bg-black",
         {
           "bg-cyan-600": isSelected,
         }
       )}
     >
       <div
-        className={clsx(
-          "flex justify-center flex-col  text-white overflow-hidden w-full font-black bg-opacity-40 h-full absolute top-0 left-0 p-2 ",
-          { "": isSelected }
-        )}
+        className={
+          " text-white overflow-hidden w-full p-2 font-black bg-opacity-40 h-full"
+        }
       >
         <motion.div
-          transition={{ duration: 0.6 }}
+          className="whitespace-nowrap"
+          transition={{ duration: 0.45 }}
           animate={{
             rotate: isSelected ? 0 : 90,
+            translateY: isSelected ? 0 : 30,
           }}
         >
-          <span className={clsx(isSelected ? "text-3xl" : "text-base")}>
+          <span className={clsx(isSelected ? "text-3xl" : "text-base ")}>
             {time}π.Χ.
           </span>
         </motion.div>
+
+        {isSelected && (
+          <div className="my-2 border-b border border-white border-opacity-5" />
+        )}
         <motion.div
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
           animate={{
+            translateY: isSelected ? 0 : -150,
             opacity: isSelected ? 1 : 0,
           }}
         >
-          {props.desc}
+          <div>{props.desc}</div>
         </motion.div>
       </div>
     </motion.button>

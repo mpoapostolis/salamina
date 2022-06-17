@@ -7,7 +7,7 @@ import clsx from "clsx";
 const Card = (props: { onClick: () => void; time: string; desc: string }) => {
   const router = useRouter();
   const isSelected = router.query.period === props.time;
-  const [time] = props.time.split("π.Χ.");
+  const [time, el] = props.time.split("π.Χ.");
   return (
     <motion.button
       transition={{ duration: 0.6 }}
@@ -16,7 +16,7 @@ const Card = (props: { onClick: () => void; time: string; desc: string }) => {
       }}
       onClick={props.onClick}
       className={clsx(
-        "w-20 select-none transition border-r items-center  duration-200 border-white text-white border-opacity-25 relative h-40 hover:bg-cyan-800  hover:text-black  bg-black",
+        "select-none transition border-r items-center  duration-200 border-white text-white border-opacity-25 relative h-40 hover:bg-cyan-800  hover:text-black  bg-black",
         {
           "bg-cyan-600": isSelected,
         }
@@ -28,16 +28,21 @@ const Card = (props: { onClick: () => void; time: string; desc: string }) => {
         }
       >
         <motion.div
-          className="whitespace-nowrap"
+          className={clsx("whitespace-nowrap", {
+            "flex w-full justify-center items-center": isSelected,
+          })}
           transition={{ duration: 0.45 }}
           animate={{
             rotate: isSelected ? 0 : 90,
             translateY: isSelected ? 0 : 30,
           }}
         >
-          <span className={clsx(isSelected ? "text-3xl" : "text-base ")}>
+          <div className={clsx(isSelected ? "text-3xl" : "text-base ")}>
             {time}π.Χ.
-          </span>
+          </div>
+          <div className={clsx(isSelected ? "text-xl ml-2 " : "text-xs")}>
+            {el.replace("-", "")}
+          </div>
         </motion.div>
 
         {isSelected && (
@@ -50,7 +55,7 @@ const Card = (props: { onClick: () => void; time: string; desc: string }) => {
             opacity: isSelected ? 1 : 0,
           }}
         >
-          <div>{props.desc}</div>
+          <div className="whitespace-normal">{props.desc}</div>
         </motion.div>
       </div>
     </motion.button>
@@ -263,7 +268,7 @@ const timeLine = [
     Μέγεθος: "",
   },
   {
-    title: "479 π.Χ. - Ιούλιος & Αύγουστος",
+    title: "479 π.Χ. - Ιούλιος-Αύγουστος",
     subtitle: "Ελληνικές ναυτικές επιτυχίες",
     desc: "Ο ελληνικός στόλος απελευθερώνει τη Χίο τη Σάμο και τη Λέσβο.",
     img: "transparent.png",
@@ -288,7 +293,7 @@ const timeLine = [
 const Home: NextPage = () => {
   const [info, setInfo] = useState(timeLine[0]);
   const router = useRouter();
-  const [title] = info.title?.split("π.Χ.");
+  const [title, el] = info.title?.split("π.Χ.");
   return (
     <div className="w-screen   h-screen relative">
       <img
@@ -339,6 +344,7 @@ const Home: NextPage = () => {
                 className="text-3xl ml-2"
               >
                 π.Χ.
+                {el.replace("-", "")}
               </motion.span>
             </div>
             <div className="border-b border-orange-400 border-opacity-50 my-5" />
@@ -354,12 +360,14 @@ const Home: NextPage = () => {
                 <div className="mb-2 text-gray-400 text-sm">
                   {info.subtitle}:
                 </div>
-                <div className="mb-4 text-gray-200">{info.desc}</div>
+                <div className="mb-4 text-gray-200">
+                  {info.desc} {el}
+                </div>
               </motion.div>
             </div>
           </div>
         </div>
-        <div className="overflow-x-scroll h-40  whitespace-nowrap w-screen">
+        <div className="overflow-x-scroll whitespace-nowrap w-screen">
           {timeLine.map((obj, idx) => (
             <Card
               onClick={() => {

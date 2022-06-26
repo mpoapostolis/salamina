@@ -301,7 +301,7 @@ const Home: NextPage = () => {
         className="object-cover w-full h-full absolute"
         alt=""
       />
-      <div className="w-screen flex justify-center items-center h-screen bg-black z-50 flex-col absolute bg-opacity-60">
+      <div className="w-screen flex justify-center items-center h-screen bg-black z-30 flex-col absolute bg-opacity-60">
         <div
           key={info.desc}
           className="flex border border-white  border-opacity-10 rounded overflow-hidden shadow bg-black bg-opacity-30 w-4/6 my-auto text-white md:text-xl text-sm"

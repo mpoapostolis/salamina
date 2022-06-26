@@ -9,8 +9,7 @@ export default function Page() {
   };
   const obj = useUnityContext({
     loaderUrl: "/unity/salamina.loader.js",
-    dataUrl:
-      "https://dl-nd365nkd.swisstransfer.com/api/download/3cd9ac0e-0360-4ae9-9c78-782d809972e0/032510f8-0a84-4619-8921-c6593a0e628a?",
+    dataUrl: "https://www.dropbox.com/s/yscuvgf2hedxoey/salamina.data?dl=0",
     frameworkUrl: "/unity/salamina.framework.js",
     codeUrl: "/unity/salamina.wasm",
   });
@@ -31,7 +30,7 @@ export default function Page() {
             </div>
           </div>
         </div>
-      )}{" "}
+      )}
       <Unity className="w-screen h-screen" unityProvider={obj.unityProvider} />
     </div>
   );

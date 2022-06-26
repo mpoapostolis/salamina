@@ -9,7 +9,7 @@ export default function Page() {
   };
   const obj = useUnityContext({
     loaderUrl: "/unity/salamina.loader.js",
-    dataUrl: "https://www.dropbox.com/s/yscuvgf2hedxoey/salamina.data?dl=0",
+    dataUrl: "https://tracker.appoploo.com/salamina/salamina.data",
     frameworkUrl: "/unity/salamina.framework.js",
     codeUrl: "/unity/salamina.wasm",
   });

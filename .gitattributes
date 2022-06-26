@@ -1,4 +1,0 @@
-public/unity/triiris/salamina.data filter=lfs diff=lfs merge=lfs -text
-public/unity/triiris/salamina.framework.js filter=lfs diff=lfs merge=lfs -text
-public/unity/triiris/salamina.loader.js filter=lfs diff=lfs merge=lfs -text
-public/unity/triiris/salamina.wasm filter=lfs diff=lfs merge=lfs -text

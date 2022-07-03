@@ -27,12 +27,7 @@ export default function Page() {
           </div>
         </div>
       )}
-      <div className="fixed right-0 h-screen w-96">
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magnam
-        perferendis molestiae veritatis dolore iure repudiandae dignissimos
-        consequuntur voluptate repellendus similique! Autem consequuntur vitae
-        reiciendis enim dignissimos nam illum quo dolore.
-      </div>
+
       <Unity className="w-screen h-screen" unityProvider={obj.unityProvider} />
     </div>
   );

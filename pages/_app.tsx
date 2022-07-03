@@ -13,6 +13,11 @@ function MyApp({ Component, pageProps }: AppProps) {
         </li>
 
         <li>
+          <Link href="/oplitis">
+            <a href="">Oplitis</a>
+          </Link>
+        </li>
+        <li>
           <Link href="/timeline">
             <a href="">time line</a>
           </Link>

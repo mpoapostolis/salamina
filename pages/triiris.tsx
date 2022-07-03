@@ -1,19 +1,16 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect } from "react";
 import { Unity, useUnityContext } from "react-unity-webgl";
 
 export default function Page() {
-  const x = async () => {
-    return await fetch("/api")
-      .then((data) => data.json())
-      .then((e) => e);
-  };
   const obj = useUnityContext({
+    streamingAssetsUrl: "https://tracker.appoploo.com/",
     loaderUrl: "/unity/salamina.loader.js",
-    dataUrl: "https://tracker.appoploo.com/salamina/salamina.data",
+    dataUrl: "/bucket/salamina.data",
     frameworkUrl: "/unity/salamina.framework.js",
     codeUrl: "/unity/salamina.wasm",
   });
-  console.log(obj);
+
   return (
     <div className="bg-black ">
       {!obj.isLoaded && (

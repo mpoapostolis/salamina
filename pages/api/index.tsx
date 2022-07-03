@@ -1,7 +1,9 @@
+import axios from "axios";
 import type { NextApiResponse } from "next";
 
-export default function handler(res: NextApiResponse) {
-  res
-    .status(200)
-    .json({ url: "https://tracker.appoploo.com/salamina/salamina.data" });
+export default async function handler(res: NextApiResponse) {
+  const x = await axios
+    .get("https://tracker.appoploo.com/salamina/salamina.data")
+    .then((d) => d.data);
+  res.status(200).json({ url: x });
 }

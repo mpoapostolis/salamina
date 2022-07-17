@@ -196,7 +196,7 @@ export default function Page() {
         </div>
       )}
       {isLoaded && (
-        <div className="fixed select-none z-50 right-0 hidden md:block h-screen w-[26vw] text-white top-0 pt-4  bg-black bg-opacity-20">
+        <div className="fixed select-none text-justify px-4 z-50 right-0 overflow-auto hidden md:block h-screen w-[26vw] text-white top-0 pt-4  bg-black bg-opacity-20">
           <h1 className="text-2xl font-bold">{text.title}</h1>
           <h1 className=" mt-6 text-base overflow-auto">{text.desc}</h1>
         </div>

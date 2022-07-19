@@ -114,6 +114,7 @@ export default function Page() {
         <div className="fixed h-8 bg-black bg-opacity-80 text-zinc-200 font-bold border-t border-white border-opacity-20  grid grid-cols-10 select-none bottom-0 w-screen  ">
           {items.map((o) => (
             <button
+              key={o.title}
               className="border-r truncate shadow border-white border-opacity-20"
               onClick={() => {
                 if (text.title === o.title) return;

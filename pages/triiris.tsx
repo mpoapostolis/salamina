@@ -75,6 +75,7 @@ export default function Page() {
     useUnityContext({
       streamingAssetsUrl: "https://tracker.appoploo.com/",
       loaderUrl: "/unity/salamina.loader.js",
+      // dataUrl: "/bucket/salamina.data",
       dataUrl: "/unity/salamina.data",
       frameworkUrl: "/unity/salamina.framework.js",
       codeUrl: "/unity/salamina.wasm",
@@ -117,7 +118,7 @@ export default function Page() {
               key={o.title}
               className="border-r truncate shadow border-white border-opacity-20"
               onClick={() => {
-                if (text.title === o.title) return;
+                if (text?.title === o?.title) return;
                 Promise.resolve()
                   .then(() => {
                     setText(null);

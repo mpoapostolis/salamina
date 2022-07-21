@@ -152,7 +152,12 @@ export default function Page() {
   ];
 
   return (
-    <div className="bg-black overflow-hidden">
+    <div
+      style={{
+        backgroundImage: `url(/images/backgroundHoplite.jpg) 100% 100% no-repeat`,
+      }}
+      className="bg-red-500 overflow-hidden"
+    >
       {!isLoaded && (
         <div className="flex  w-screen h-screen fixed z-50 pointer-events-none justify-center items-center text-white">
           <div>
@@ -169,7 +174,7 @@ export default function Page() {
         </div>
       )}
       <Unity
-        className="w-screen h-screen relative"
+        className="w-screen  h-screen relative"
         unityProvider={unityProvider}
       />
       {isLoaded && (

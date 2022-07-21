@@ -114,7 +114,11 @@ function NewlineText(props: any) {
     ?.filter((e: any) => {
       return e !== "";
     })
-    ?.map((str: string) => <p className="mb-2"> &nbsp; {str}</p>);
+    ?.map((str: string, idx: number) => (
+      <p key={idx} className="mb-2">
+        &nbsp; {str}
+      </p>
+    ));
   return newText;
 }
 

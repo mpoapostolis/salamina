@@ -452,10 +452,6 @@ const Home: NextPage = () => {
     lang === "el" ? "π.Χ." : "B.C."
   );
 
-  console.log(info[`title_${lang}`], lang);
-
-  console.log(router.query);
-
   return (
     <div className="w-screen   h-screen relative">
       <img

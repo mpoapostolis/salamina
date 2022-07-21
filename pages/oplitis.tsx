@@ -42,6 +42,17 @@ export default function Page() {
       codeUrl: "/unity/oplitis.wasm",
     });
 
+  function NewlineText(props: any) {
+    const text = props.text;
+    const newText = text
+      ?.split("\n")
+      ?.filter((e: any) => {
+        return e !== "";
+      })
+      ?.map((str: string) => <p className="mb-2"> &nbsp; {str}</p>);
+    return newText;
+  }
+
   const [inv, setInv] = useState({
     toggleSpear: false,
     toggleSword: false,
@@ -203,8 +214,8 @@ export default function Page() {
       )}
       {isLoaded && (
         <div className="fixed select-none text-justify px-4 z-50 right-0 overflow-auto hidden md:block h-screen w-[26vw] text-white top-0 pt-4  bg-black bg-opacity-20">
-          <h1 className="text-2xl font-bold">{text.title}</h1>
-          <h1 className=" mt-6 text-base overflow-auto">{text.desc}</h1>
+          <h1 className="text-2xl mb-4 font-bold">{text.title}</h1>
+          <NewlineText text={text.desc} />
         </div>
       )}
     </div>

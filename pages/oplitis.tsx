@@ -154,9 +154,10 @@ export default function Page() {
   return (
     <div
       style={{
-        backgroundImage: `url(/images/backgroundHoplite.jpg) 100% 100% no-repeat`,
+        backgroundImage: `url(/images/backgroundHoplite.jpg)`,
+        backgroundSize: "100% 100%",
       }}
-      className="bg-red-500 overflow-hidden"
+      className="h-screen w-screen overflow-hidden"
     >
       {!isLoaded && (
         <div className="flex  w-screen h-screen fixed z-50 pointer-events-none justify-center items-center text-white">

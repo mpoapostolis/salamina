@@ -297,7 +297,7 @@ const Home: NextPage = () => {
   return (
     <div className="w-screen   h-screen relative">
       <img
-        src="/images/salamis.webp"
+        src="/images/BackgroundChronologio.jpg"
         className="object-cover w-full h-full absolute"
         alt=""
       />

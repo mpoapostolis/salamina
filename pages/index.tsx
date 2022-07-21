@@ -30,6 +30,13 @@ export default function Home() {
             {(locale === "el" ? "ΧΑΡΤΗΣ" : `HOPLITE`).toUpperCase()}
           </a>
         </Link>
+
+        <Link href="/viografies">
+          <a className="text-4xl uppercase hover:bg-white hover:bg-opacity-10 transition duration-100 py-4 font-bold text-white w-full border">
+            {(locale === "el" ? "ΒΙΟΓΡΑΦΙΕΣ" : `BIOGRAPHY`).toUpperCase()}
+          </a>
+        </Link>
+
         <select
           onChange={(evt) => {
             const locale = evt.currentTarget.value;

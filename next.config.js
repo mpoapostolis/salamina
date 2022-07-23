@@ -9,7 +9,7 @@ const nextConfig = {
     return [
       {
         source: "/bucket/:path*",
-        destination: "https://appoploo.fra1.digitaloceanspaces.com/:path*",
+        destination: "https://mpoapostolis.fra1.digitaloceanspaces.com/:path*",
       },
     ];
   },

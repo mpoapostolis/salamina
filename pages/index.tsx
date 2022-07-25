@@ -27,7 +27,10 @@ export default function Home() {
 
         <Link href="/map">
           <a className="text-4xl uppercase hover:bg-white hover:bg-opacity-10 transition duration-100 py-4 font-bold text-white w-full border">
-            {(locale === "el" ? "ΧΑΡΤΗΣ" : `HOPLITE`).toUpperCase()}
+            {(locale === "el"
+              ? "Ναυμαχία της σαλαμινας"
+              : ` Battle of Salamis`
+            ).toUpperCase()}
           </a>
         </Link>
 

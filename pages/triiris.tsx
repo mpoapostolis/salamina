@@ -139,10 +139,9 @@ const sleep = (ms: number) => {
 const U = () => {
   const { isLoaded, sendMessage, loadingProgression, unityProvider } =
     useUnityContext({
-      streamingAssetsUrl: "https://tracker.appoploo.com/",
+      streamingAssetsUrl: "/unity/salamina.data",
       loaderUrl: "/unity/salamina.loader.js",
-      dataUrl: "/bucket/salamina.data",
-      // dataUrl: "/unity/salamina.data",
+      dataUrl: "/unity/salamina.data",
       frameworkUrl: "/unity/salamina.framework.js",
       codeUrl: "/unity/salamina.wasm",
     });

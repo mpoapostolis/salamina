@@ -1,4 +1,5 @@
 import clsx from "clsx";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { Unity, useUnityContext } from "react-unity-webgl";
@@ -57,7 +58,7 @@ const desc = {
 };
 
 export default function Page() {
-  const { unityProvider, sendMessage, isLoaded, loadingProgression } =
+  const { unityProvider, sendMessage, isLoaded, loadingProgression, unload } =
     useUnityContext({
       streamingAssetsUrl: "/unity/oplitis.data",
       loaderUrl: "/unity/oplitis.loader.js",
@@ -80,6 +81,10 @@ export default function Page() {
       ));
     return newText;
   }
+
+  useEffect(() => {
+    async () => await unload();
+  }, []);
 
   const [inv, setInv] = useState({
     toggleSpear: false,
@@ -188,7 +193,13 @@ export default function Page() {
     },
   ];
   const { locale } = useRouter();
+  const router = useRouter();
 
+  async function handleClickBack() {
+    await unload();
+    router.push(`/`);
+    // Ready to navigate to another page.
+  }
   return (
     <div
       style={{
@@ -197,6 +208,23 @@ export default function Page() {
       }}
       className="h-screen w-screen overflow-hidden"
     >
+      <button
+        onClick={handleClickBack}
+        className="z-50 fixed text-white top-16 left-4"
+      >
+        <svg
+          width="32"
+          height="32"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 32 32"
+          fill="currentColor"
+          color="#FFF"
+        >
+          <path d="M0 0h24v24H0z" fill="none"></path>
+          <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"></path>
+        </svg>
+      </button>
+
       {!isLoaded && (
         <div className="flex  w-screen h-screen fixed z-50 pointer-events-none justify-center items-center text-white">
           <div>

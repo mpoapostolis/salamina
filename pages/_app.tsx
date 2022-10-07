@@ -10,14 +10,9 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <main className="relative">
       {/* <FPSStats /> */}
-      {router.pathname !== "/" && (
-        <button
-          onClick={() => {
-            router.reload();
-            router.push("/");
-          }}
-        >
-          <a className="z-50 fixed text-white top-16 left-4">
+      {!["/", "triiris", "oplitis"].includes(router.pathname) && (
+        <Link href="/">
+          <a href="/" className="z-50 fixed text-white top-16 left-4">
             <svg
               width="24"
               height="24"
@@ -30,7 +25,7 @@ function MyApp({ Component, pageProps }: AppProps) {
               <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"></path>
             </svg>
           </a>
-        </button>
+        </Link>
       )}
       <Component {...pageProps} />
     </main>

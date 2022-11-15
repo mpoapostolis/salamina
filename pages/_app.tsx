@@ -15,7 +15,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       {!["/"].includes(router.pathname) && (
         <button
           onClick={() => {
-            window.location.assign("/");
+            window.location.assign("/" + router.locale);
           }}
           className="z-50 fixed text-white top-16 left-4"
         >

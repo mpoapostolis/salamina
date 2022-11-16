@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 
-function NewlineText(props: any) {
+export function NewlineText(props: any) {
   const text = props.text;
   const newText = text
     ?.split("\n")
@@ -170,7 +170,6 @@ export default function Viografies() {
                 <img className="w-1/2" src={obj.img1} />
               </>
             )}
-
             {obj[`subtitle1_${locale}`] && (
               <>
                 <br />
@@ -180,7 +179,6 @@ export default function Viografies() {
                 </h1>
               </>
             )}
-
             {obj.img2 && (
               <>
                 <br />
@@ -188,7 +186,15 @@ export default function Viografies() {
                 <img className="w-1/2" src={obj.img2} />
               </>
             )}
-
+            {obj[`subtitle2_${locale}`] && (
+              <>
+                <br />
+                <br />
+                <h1 className="text-gray-300 text-sm">
+                  {obj[`subtitle1_${locale}`]}
+                </h1>
+              </>
+            )}
             <br />
             <br />
             <NewlineText text={obj[`desc_${locale}`]} />

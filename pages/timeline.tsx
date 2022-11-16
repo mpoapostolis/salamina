@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { useRouter } from "next/router";
 import clsx from "clsx";
 import { useState } from "react";
+import { NewlineText } from "./viografies";
 
 const Card = (props: { onClick: () => void; time: string; desc: string }) => {
   const router = useRouter();
@@ -553,7 +554,7 @@ const Home: NextPage = () => {
                   {info[`subtitle_${lang}`]}:
                 </div>
                 <div className="mb-4 text-gray-200">
-                  {info[`desc_${lang}`]} {period}
+                  <NewlineText text={info[`desc_${lang}`]} />
                 </div>
               </motion.div>
             </div>

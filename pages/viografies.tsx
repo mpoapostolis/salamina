@@ -191,7 +191,7 @@ export default function Viografies() {
                 <br />
                 <br />
                 <h1 className="text-gray-300 text-sm">
-                  {obj[`subtitle1_${locale}`]}
+                  {obj[`subtitle2_${locale}`]}
                 </h1>
               </>
             )}
